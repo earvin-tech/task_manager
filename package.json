@@ -6,10 +6,14 @@
     "dev": "node src/server.js",
     "start": "NODE_ENV=production node src/server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/earvin-tech/task_manager"
+  },
   "keywords": [],
-  "author": "",
+  "author": "earvin-tech",
   "license": "ISC",
-  "description": "",
+  "description": "Task Manager API built with Node.js, Express, and MongoDB",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
