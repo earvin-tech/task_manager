@@ -1,6 +1,7 @@
 const express = require('express');
 const databaseConnect = require('./config/database');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const userRoutes = require("./routes/UserRoutes");
 
 const app = express();
 
@@ -10,9 +11,13 @@ databaseConnect();
 
 app.use(express.json());
 
+
+
 app.get("/", (request, response) => {
     response.send("Hello World!")
 });
+
+app.use("/users", userRoutes);
 
 const PORT = process.env.PORT || 5000;
 
