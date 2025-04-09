@@ -3,6 +3,7 @@ const databaseConnect = require('./config/database');
 const dotenv = require('dotenv');
 const userRoutes = require("./routes/UserRoutes");
 const projectRoutes = require("./routes/ProjectRoutes");
+const taskRoutes = require("./routes/TaskRoutes");
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.get("/", (request, response) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/projects", projectRoutes);
+app.use("/api/tasks", taskRoutes);
 
 const PORT = process.env.PORT || 5000;
 
