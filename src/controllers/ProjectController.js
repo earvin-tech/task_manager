@@ -58,7 +58,7 @@ const updateProject = async (request, response, next) => {
             });
         }
 
-        response.json(updateProject);
+        response.json(updatedProject);
     } catch (err) {
         next(err);
     }
@@ -68,7 +68,7 @@ const deleteProject = async (request, response, next) => {
     try {
         const deletedProject = await Project.findByIdAndDelete(request.params.id);
 
-        if (!deleteProject) {
+        if (!deletedProject) {
             return response.status(404).json({
                 message: "Project not found"
             });
