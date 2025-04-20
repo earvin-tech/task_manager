@@ -137,6 +137,65 @@ This keeps controller code focused on its core logic — and every error flows t
 
 ---
 
+## ⚖️ Ethical Issues Solved by Centralised Error Handling
+
+### 🔐 1. Leaking Sensitive Information
+In many Express.js apps, developers accidentally expose stack traces or internal server messages, especially when there's no centralized error handler in place.
+
+This poses a serious ethical concern:
+
+- 🔓 Revealing file paths, schema structures, or internal logic could allow attackers to exploit your system
+- 🛠️ It also creates uncertainty and confusion for regular users who don’t understand cryptic error output
+
+With a centralized error handler, you can safely control what information gets shown in production:
+
+` stack: process.env.NODE_ENV === "production" ? "💥" : err.stack`
+
+✅ This ensures:
+
+- No raw system messages are leaked
+- Stack traces are hidden in live environments
+- Every user sees a clear, user-friendly error
+
+> 💡 Developers have a responsibility to protect users — not just their data, but also the structure of the system. Centralising error handling helps enforce that boundary.
+
+### 💬 2. Inconsistent or Misleading Error Messages
+
+If every controller formats errors differently, users may receive:
+
+- Confusing or vague error messages ("Oops" or "Something broke")
+- Errors with no status codes
+- Totally different response formats across endpoints
+
+This inconsistency creates unfair or unclear experiences, and can even impact accessibility for users who need precise feedback (e.g. screen readers, non-native speakers).
+
+With centralised error handling:
+
+- You define one format for every error
+- You can localise or customise messages easily later
+- You keep your API predictable for other devs
+
+```js
+res.status(404);
+return next(new Error("Task not found"));
+```
+Combined with the error handler, this returns:
+
+```js
+{
+  "message": "Task not found",
+  "stack": "💥"
+}
+```
+✅ This improves the user experience ethically and technically:
+
+- Consistency builds trust
+- Clear messages mean users aren’t blamed for errors they didn’t cause
+- Developers consuming your API know exactly what to expect
+
+> 🧠 Ethical development means building systems that respond clearly, fairly, and predictably — not just systems that “work.”
+---
+
 ## 🧼 Final Thoughts
 
 Centralised error handling isn’t just a nice-to-have — it’s a must for any Express.js project that’s meant to scale cleanly and be maintained long-term.
