@@ -1,3 +1,4 @@
+// server.js - Annotated for clarity and documentation
 const express = require('express');
 const databaseConnect = require('./config/database');
 const dotenv = require('dotenv');

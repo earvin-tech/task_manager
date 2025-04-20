@@ -1,5 +1,7 @@
+// TaskModel.js - Annotated for clarity and documentation
 const { default: mongoose } = require("mongoose");
 
+// Mongoose schema or model definition
 const taskSchema = new mongoose.Schema(
     {
         title: {
@@ -45,6 +47,7 @@ const taskSchema = new mongoose.Schema(
     }
 );
 
+// Mongoose schema or model definition
 const Task = mongoose.model("Task", taskSchema);
 
 module.exports = { Task };

@@ -1,3 +1,4 @@
+// ProjectRoutes.js - Annotated for clarity and documentation
 const express = require("express");
 const {
   createProject,

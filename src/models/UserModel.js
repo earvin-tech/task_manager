@@ -1,6 +1,8 @@
+// UserModel.js - Annotated for clarity and documentation
 const { default: mongoose } = require("mongoose");
 const crypto = require("node:crypto");
 
+// Mongoose schema or model definition
 const userSchema = new mongoose.Schema(
     {
         username: {
@@ -56,6 +58,7 @@ userSchema.methods.comparePassword = function (passwordToCheck) {
     return this.password == hashedSaltedPassword;
 }
 
+// Mongoose schema or model definition
 const User = mongoose.model("User", userSchema);
 
 module.exports = {User};

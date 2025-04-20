@@ -1,3 +1,4 @@
+// errorHandler.js - Annotated for clarity and documentation
 
 const errorHandler = (err, request, response, next) => {
     const statusCode = response.statusCode && response.statusCode !== 200 ? response.statusCode : 500;

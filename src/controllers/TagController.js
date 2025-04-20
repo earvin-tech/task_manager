@@ -1,7 +1,9 @@
+// TagController.js - Annotated for clarity and documentation
 const { Tag } = require("../models/TagModel");
 
 // Create a new tag
 const createTag = async (request, response, next) => {
+// Begin try block to handle potential runtime errors
     try {
         const { name } = request.body;
 
@@ -9,23 +11,29 @@ const createTag = async (request, response, next) => {
         await tag.save();
 
         response.status(201).json(tag);
+// Catch block to forward or log errors
     } catch (err) {
+// Pass error to centralized error handler
         next(err);
     }
 };
 
 // Get all tags
 const getAllTags = async (request, response, next) => {
+// Begin try block to handle potential runtime errors
     try {
         const tags = await Tag.find();
         response.json(tags);
+// Catch block to forward or log errors
     } catch (err) {
+// Pass error to centralized error handler
         next(err);
     }
 };
 
 // Get one tag by ID
 const getTagById = async (request, response, next) => {
+// Begin try block to handle potential runtime errors
     try {
         const tag = await Tag.findById(request.params.id);
 
@@ -34,13 +42,16 @@ const getTagById = async (request, response, next) => {
         }
 
         response.json(tag);
+// Catch block to forward or log errors
     } catch (err) {
+// Pass error to centralized error handler
         next(err);
     }
 };
 
 // Update a tag by ID
 const updateTag = async (request, response, next) => {
+// Begin try block to handle potential runtime errors
     try {
         const updatedTag = await Tag.findByIdAndUpdate(
             request.params.id,
@@ -53,13 +64,16 @@ const updateTag = async (request, response, next) => {
         }
 
         response.json(updatedTag);
+// Catch block to forward or log errors
     } catch (err) {
+// Pass error to centralized error handler
         next(err);
     }
 };
 
 // Delete a tag by ID
 const deleteTag = async (request, response, next) => {
+// Begin try block to handle potential runtime errors
     try {
         const deletedTag = await Tag.findByIdAndDelete(request.params.id);
 
@@ -68,7 +82,9 @@ const deleteTag = async (request, response, next) => {
         }
 
         response.json({ message: "Tag deleted" });
+// Catch block to forward or log errors
     } catch (err) {
+// Pass error to centralized error handler
         next(err);
     }
 };
