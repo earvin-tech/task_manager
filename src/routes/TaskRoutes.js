@@ -1,3 +1,5 @@
+import verifyToken from "../middleware/verifyToken";
+
 // TaskRoutes.js - Annotated for clarity and documentation
 const express = require("express");
 const {
@@ -11,18 +13,18 @@ const {
 const taskRouter = express.Router();
 
 // POST /api/tasks
-taskRouter.post("/", createTask);
+taskRouter.post("/", verifyToken, createTask);
 
 // GET /api/tasks
-taskRouter.get("/", getAllTasks);
+taskRouter.get("/", verifyToken, getAllTasks);
 
 // GET /api/tasks/:id
-taskRouter.get("/:id", getTaskById);
+taskRouter.get("/:id", verifyToken, getTaskById);
 
 // PUT /api/tasks/:id
-taskRouter.put("/:id", updateTask);
+taskRouter.put("/:id", verifyToken, updateTask);
 
 // DELETE /api/tasks/:id
-taskRouter.delete("/:id", deleteTask);
+taskRouter.delete("/:id", verifyToken, deleteTask);
 
 module.exports = taskRouter;
