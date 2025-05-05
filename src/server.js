@@ -1,5 +1,6 @@
 // server.js - Annotated for clarity and documentation
 const express = require('express');
+const cors = require('cors');
 const databaseConnect = require('./config/database');
 const dotenv = require('dotenv');
 const userRoutes = require("./routes/UserRoutes");
@@ -27,7 +28,10 @@ databaseConnect();
 
 app.use(express.json());
 
-
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 
 app.get("/", (request, response) => {
     response.send("Hello World!")

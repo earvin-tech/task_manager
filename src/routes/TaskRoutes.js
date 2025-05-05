@@ -1,5 +1,3 @@
-const { verifyToken } = require("../middleware/verifyToken")
-
 // TaskRoutes.js - Annotated for clarity and documentation
 const express = require("express");
 const {
@@ -11,6 +9,8 @@ const {
 } = require("../controllers/TaskController");
 
 const taskRouter = express.Router();
+
+const { verifyToken } = require("../middleware/verifyToken");
 
 // POST /api/tasks
 taskRouter.post("/", verifyToken, createTask);
