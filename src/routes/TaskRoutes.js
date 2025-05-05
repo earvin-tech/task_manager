@@ -1,4 +1,4 @@
-import verifyToken from "../middleware/verifyToken";
+const { verifyToken } = require("../middleware/verifyToken")
 
 // TaskRoutes.js - Annotated for clarity and documentation
 const express = require("express");
