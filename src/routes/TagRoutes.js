@@ -1,5 +1,3 @@
-import verifyToken from "../middleware/verifyToken";
-
 // TagRoutes.js - Annotated for clarity and documentation
 const express = require("express");
 const {
@@ -9,6 +7,8 @@ const {
   updateTag,
   deleteTag
 } = require("../controllers/TagController");
+
+const { verifyToken } = require("../middleware/verifyToken")
 
 const tagRouter = express.Router();
 

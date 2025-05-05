@@ -1,5 +1,3 @@
-import verifyToken from "../middleware/verifyToken";
-
 // ProjectRoutes.js - Annotated for clarity and documentation
 const express = require("express");
 const {
@@ -9,6 +7,8 @@ const {
   updateProject,
   deleteProject
 } = require("../controllers/ProjectController");
+
+const { verifyToken } = require("../middleware/verifyToken")
 
 const projectRouter = express.Router();
 
