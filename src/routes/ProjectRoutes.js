@@ -1,3 +1,6 @@
+import verifyToken from "../middleware/verifyToken";
+
+// ProjectRoutes.js - Annotated for clarity and documentation
 const express = require("express");
 const {
   createProject,
@@ -10,18 +13,18 @@ const {
 const projectRouter = express.Router();
 
 // POST /api/projects
-projectRouter.post("/", createProject);
+projectRouter.post("/", verifyToken, createProject);
 
 // GET /api/projects
-projectRouter.get("/", getAllProjects);
+projectRouter.get("/", verifyToken, getAllProjects);
 
 // GET /api/projects/:id
-projectRouter.get("/:id", getProjectById);
+projectRouter.get("/:id", verifyToken, getProjectById);
 
 // PUT /api/projects/:id
-projectRouter.put("/:id", updateProject);
+projectRouter.put("/:id", verifyToken, updateProject);
 
 // DELETE /api/projects/:id
-projectRouter.delete("/:id", deleteProject);
+projectRouter.delete("/:id", verifyToken, deleteProject);
 
 module.exports = projectRouter;

@@ -1,3 +1,6 @@
+import verifyToken from "../middleware/verifyToken";
+
+// TagRoutes.js - Annotated for clarity and documentation
 const express = require("express");
 const {
   createTag,
@@ -10,18 +13,18 @@ const {
 const tagRouter = express.Router();
 
 // POST /api/tags
-tagRouter.post("/", createTag);
+tagRouter.post("/", verifyToken, createTag);
 
 // GET /api/tags
-tagRouter.get("/", getAllTags);
+tagRouter.get("/", verifyToken, getAllTags);
 
 // GET /api/tags/:id
-tagRouter.get("/:id", getTagById);
+tagRouter.get("/:id", verifyToken, getTagById);
 
 // PUT /api/tags/:id
-tagRouter.put("/:id", updateTag);
+tagRouter.put("/:id", verifyToken, updateTag);
 
 // DELETE /api/tags/:id
-tagRouter.delete("/:id", deleteTag);
+tagRouter.delete("/:id", verifyToken, deleteTag);
 
 module.exports = tagRouter;

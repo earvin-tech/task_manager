@@ -1,5 +1,7 @@
+// TagModel.js - Annotated for clarity and documentation
 const { default: mongoose } = require("mongoose");
 
+// Mongoose schema or model definition
 const tagSchema = new mongoose.Schema(
     {
         name: {
@@ -23,6 +25,7 @@ const tagSchema = new mongoose.Schema(
     }
 );
 
+// Mongoose schema or model definition
 const Tag = mongoose.model("Tag", tagSchema);
 
 module.exports = { Tag };
